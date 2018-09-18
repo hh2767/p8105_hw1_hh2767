@@ -1,0 +1,31 @@
+---
+title: "p8105_hw1_hh2767"
+author: "Haoran Hu"
+date: "2018-09-18"
+output: github_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+```{r include = FALSE}
+library(tidyverse)
+```
+
+In this part, I will construct a data frame with four columns. The four columns are: a random sample of size 10 from a uniform[0, 5] distribution, a logical vector indicating whether elements of the sample are greater than 2, a length-10 character vector, and a length-10 factor vector, from left to right.
+
+```{r}
+problem1_df = tibble(
+  vec_unif = runif(10, min = 0, max = 5),
+  vec_logical_compare_2 = ifelse(vec_unif > 2, TRUE, FALSE),
+  vec_char = c("I", "am", "doing", "my", "second", "hw", "of", "p8015", "data", "science"),
+  vec_factor = factor(c("male", "female", "male", "female", "male", "male",     "female", "male", "female", "male"))
+  )
+```
+The data frame is shown below:
+```{r echo = FALSE}
+problem1_df
+```
+
+
+In this part, I will try to take the mean of each variable in the data frame. It only wroked for the first colomn(vec_nuif).
