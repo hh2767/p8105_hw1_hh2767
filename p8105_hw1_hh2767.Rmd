@@ -44,7 +44,7 @@ as.numeric(problem1_df$vec_factor)
 ```
 In the following chunk, I will try converting "vec_char" from character to factor to numeric, and converting "vec_factor" from factor to character to numeric.
 
-```{r warning = FALSE}
+```{r}
 problem1_df$vec_char = as.factor(problem1_df$vec_char) #converting vec_char from character to factor
 problem1_df$vec_char = as.numeric(problem1_df$vec_char) #converting vec_char from factor to numeric
 problem1_df$vec_factor = as.character(problem1_df$vec_factor) #converting vec_factor from factor to character
