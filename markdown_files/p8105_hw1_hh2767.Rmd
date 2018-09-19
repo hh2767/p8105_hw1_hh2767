@@ -85,5 +85,5 @@ A scatterplot that color points using the factor variable is as below.
 ```{r}
 ggplot(problem2_df, aes(x = x, y = y, color = vec_lgl_to_fact)) + geom_point()
 ```
-As the plots show, when color points using logical or factor vectors, the color scale is two discrete values: TRUE or FALSE; when color points using numerical vector, the color scale is [0,1].
+As the plots show, when color points using logical or factor vectors, the color scale is two colors: orange and green, which refer to TRUE and FALSE; when color points using numerical vector, the color can change from dark blue to light blue, and this color scale refers to the range [0,1].
 
