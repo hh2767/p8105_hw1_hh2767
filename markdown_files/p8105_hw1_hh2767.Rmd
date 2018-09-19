@@ -75,7 +75,7 @@ The data frame is a `r nrow(problem2_df)` * `r ncol(problem2_df)` data set. The 
 A scatterplot that color points using the logical variable is as below. The plot is exported to the project directory using ggsave.
 ```{r}
 ggplot(problem2_df, aes(x = x, y = y, color = vec_lgl_xy_greater_0)) + geom_point()
-ggsave("scatplot_bylgl.pdf", height = 4, width = 6, path = ".\\plot")
+ggsave("scatplot_bylgl.pdf", height = 4, width = 6, path = "..\\plot")
 ```
 A scatterplot that color points using the numeric variable is as below.
 ```{r}
