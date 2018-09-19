@@ -3,6 +3,7 @@ title: "p8105_hw1_hh2767"
 author: "Haoran Hu"
 date: "2018-09-18"
 output: github_document
+   
 ---
 
 ```{r setup, include=FALSE}
@@ -17,7 +18,7 @@ In this part, I will construct a data frame with four columns. From left to righ
 ```{r}
 problem1_df = tibble(
   vec_unif = runif(10, min = 0, max = 5),
-  vec_logical_greater_2 = ifelse(vec_unif > 2, TRUE, FALSE),
+  vec_lgl_greater_2 = ifelse(vec_unif > 2, TRUE, FALSE),
   vec_char = c("I", "am", "doing", "my", "second", "hw", "of", "p8015", "data", "science"),
   vec_factor = factor(c("male", "female", "male", "female", "male", "male",     "female", "male", "female", "male"))
   )
@@ -27,17 +28,17 @@ The data frame is as below:
 problem1_df
 ```
 ##Take the mean of each variable in the data frame
-In this part, I will try to take the mean of each variable in the data frame. It only wroked for the first column(vec_nuif) and the second column(vec_logical_greater_2).
+In this part, I will try to take the mean of each variable in the data frame. It only wroked for the first column(vec_nuif) and the second column(vec_lgl_greater_2).
 ```{r}
 mean_vec_unif = mean(problem1_df$vec_unif)
-mean_vec_logical_greater_2 = mean(problem1_df$vec_logical_greater_2)
+mean_vec_lgl_greater_2 = mean(problem1_df$vec_lgl_greater_2)
 ```
-The mean of "vec_unif" variable is `r mean_vec_unif`, and the mean of "vec_logical_greater_2" variable is `r mean_vec_logical_greater_2`. The mean of "vec_unif" is directly calculated, while the mean of "vec_logical_greater_2" was calculated by treating "TRUE" as numerical "1", and "FALSE" as numerical "2". The mean of "vec_char" and "vec_factor" cannot be calculated, because they are neither numerical value nor logical value, and if we calculate the mean of them, the outputs will be displayed as NAs.
+The mean of "vec_unif" variable is `r mean_vec_unif`, and the mean of "vec_lgl_greater_2" variable is `r mean_vec_lgl_greater_2`. The mean of "vec_unif" is directly calculated, while the mean of "vec_lgl_greater_2" was calculated by treating "TRUE" as numerical "1", and "FALSE" as numerical "2". The mean of "vec_char" and "vec_factor" cannot be calculated, because they are neither numerical value nor lgl value, and if we calculate the mean of them, the outputs will be displayed as NAs.
 
 ##Convert variables from one type to another
 In this part, I will apply the "as.numeric" function to the logical, character, and factor variables, but the output will not be shown.
 ```{r eval = FALSE}
-as.numeric(problem1_df$vec_logical_greater_2)
+as.numeric(problem1_df$vec_lgl_greater_2)
 as.numeric(problem1_df$vec_char)
 as.numeric(problem1_df$vec_factor)
 ```
@@ -62,19 +63,19 @@ The following chunk creates a data frame with 5 columns. From left to right, the
 problem2_df = tibble(
   x = rnorm(1000, mean = 0, sd = 1),
   y = rnorm(1000, mean = 0, sd = 1),
-  vec_logical_greater_0 = ifelse((x + y) > 0, TRUE, FALSE),
-  vec_lgl_to_num = as.numeric(vec_logical_greater_0),
-  vec_lgl_to_fact = as.factor(vec_logical_greater_0)
+  vec_lgl_xy_greater_0 = ifelse((x + y) > 0, TRUE, FALSE),
+  vec_lgl_to_num = as.numeric(vec_lgl_xy_greater_0),
+  vec_lgl_to_fact = as.factor(vec_lgl_xy_greater_0)
   )
 problem2_df
 ```
-The data frame is a `r nrow(problem2_df)` * `r ncol(problem2_df)` data set. The mean of x is `r mean(problem2_df$x)`, and the median of x is `r median(problem2_df$x)`.The proportion of cases for which the logical vector is TRUE is `r mean(problem2_df$vec_logical_greater_0)`.
+The data frame is a `r nrow(problem2_df)` * `r ncol(problem2_df)` data set. The mean of x is `r mean(problem2_df$x)`, and the median of x is `r median(problem2_df$x)`.The proportion of cases for which the logical vector is TRUE is `r mean(problem2_df$vec_lgl_xy_greater_0)`.
 
 ##Scatterplot colored in different ways
 A scatterplot that color points using the logical variable is as below. The plot is exported to the project directory using ggsave.
 ```{r}
-ggplot(problem2_df, aes(x = x, y = y, color = vec_logical_greater_0)) + geom_point()
-ggsave("scatplot_bylgl.pdf", height = 4, width = 6)
+ggplot(problem2_df, aes(x = x, y = y, color = vec_lgl_xy_greater_0)) + geom_point()
+ggsave("scatplot_bylgl.pdf", height = 4, width = 6, path = ".\\plot")
 ```
 A scatterplot that color points using the numeric variable is as below.
 ```{r}
